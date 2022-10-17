@@ -1,5 +1,7 @@
 package com.example.systemymobilnezad3;
 
+import androidx.annotation.NonNull;
+
 import java.util.Date;
 import java.util.UUID;
 
@@ -13,4 +15,46 @@ public class Task {
         date=new Date();
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", date=" + date +
+                ", done=" + done +
+                '}';
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public boolean isDone() {
+        return done;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public void setDone(boolean done) {
+        this.done = done;
+    }
 }

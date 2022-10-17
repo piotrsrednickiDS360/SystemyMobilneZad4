@@ -2,17 +2,13 @@ package com.example.systemymobilnezad3;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
 
-import java.util.UUID;
-
-public class MainActivity extends SingleFragmentActivity {
+public class TaskListActivity extends SingleFragmentActivity {
 
     @Override
     public Fragment createFragment() {
-        UUID taskId=(UUID)getIntent().getSerializableExtra(TaskListFragment.KEY_EXTRA_TASK_ID);
         return super.createFragment();
     }
 
