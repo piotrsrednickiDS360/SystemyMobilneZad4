@@ -7,7 +7,7 @@ import androidx.fragment.app.FragmentManager;
 public abstract class SingleFragmentActivity extends AppCompatActivity {
     public Fragment createFragment(){
 
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.fragment_task);
         FragmentManager fragmentManager=getSupportFragmentManager();
         Fragment fragment = fragmentManager.findFragmentById(R.id.fragment_container);
         if(fragment==null){

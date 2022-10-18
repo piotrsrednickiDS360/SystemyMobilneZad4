@@ -1,5 +1,6 @@
 package com.example.systemymobilnezad3;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -18,40 +19,23 @@ import java.util.UUID;
 
 public class TaskFragment extends Fragment {
     private static final String ARG_TASK_ID = "id";
-    private Task task;
+    public Task task;
     private EditText nameField;
     private Button dateButton;
     private CheckBox doneCheckBox;
+    public UUID taskId;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.task=new Task();
-        UUID taskId=(UUID)getArguments().getSerializable(ARG_TASK_ID);
-        task=TaskStorage.getInstance().getTask(taskId);
+//        this.task=new Task();
+//        dateButton=getView().findViewById(R.id.task_date);
+//        nameField= getView().findViewById(R.id.task_name);
+//        doneCheckBox= getView().findViewById(R.id.task_done);
+//        dateButton.setText(task.getDate().toString());
+//        dateButton.setEnabled(false);
+//        doneCheckBox.setText(task.getDate().toString());
+//        doneCheckBox.setOnCheckedChangeListener((buttonView,isChecked) -> task.setDone(isChecked));
 
-        dateButton=getView().findViewById(R.id.task_date);
-        nameField= getView().findViewById(R.id.task_name);
-        doneCheckBox= getView().findViewById(R.id.task_done);
-        nameField.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int i, int i1, int i2) {
-                task.setName(s.toString());
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-        dateButton.setText(task.getDate().toString());
-        dateButton.setEnabled(false);
-        doneCheckBox.setText(task.getDate().toString());
-        doneCheckBox.setOnCheckedChangeListener((buttonView,isChecked) -> task.setDone(isChecked));
     }
 
     @Nullable
@@ -90,6 +74,7 @@ public class TaskFragment extends Fragment {
                     task.setDone(isChecked);
                 });
             }
+
         }
         return inflater.inflate(R.layout.fragment_task,container,false);
     }

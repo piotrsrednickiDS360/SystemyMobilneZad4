@@ -9,7 +9,7 @@ import android.os.Bundle;
 import java.util.UUID;
 
 public class MainActivity extends SingleFragmentActivity {
-
+    public Fragment fragment;
     @Override
     public Fragment createFragment() {
         UUID taskId=(UUID)getIntent().getSerializableExtra(TaskListFragment.KEY_EXTRA_TASK_ID);
@@ -19,5 +19,6 @@ public class MainActivity extends SingleFragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        fragment=createFragment();
     }
 }

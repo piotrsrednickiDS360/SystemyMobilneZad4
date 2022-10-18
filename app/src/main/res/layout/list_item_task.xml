@@ -7,13 +7,12 @@
 
     <TextView
         android:id="@+id/task_item_name"
-        style="?android:listSeparatorTextViewStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/name_label"/>
+        android:text="@string/name_label" />
+
     <TextView
         android:id="@+id/task_item_date"
-        style="?android:listSeparatorTextViewStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/name_label"/>

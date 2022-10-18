@@ -24,7 +24,7 @@ public class TaskStorage {
     }
     public Task getTask(UUID id){
         for(int i=0;i<tasks.size();i++){
-            if(tasks.get(i).getId()==id){
+            if(tasks.get(i).getId().equals(id)){
                 return tasks.get(i);
             }
         }
