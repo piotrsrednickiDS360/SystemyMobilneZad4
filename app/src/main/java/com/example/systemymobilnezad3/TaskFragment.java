@@ -18,7 +18,7 @@ import androidx.fragment.app.Fragment;
 import java.util.UUID;
 
 public class TaskFragment extends Fragment {
-    private static final String ARG_TASK_ID = "id";
+    private static final String ARG_TASK_ID = "arg_id";
     public Task task;
     private EditText nameField;
     private Button dateButton;
@@ -27,7 +27,10 @@ public class TaskFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        this.task=new Task();
+        if (getArguments() != null) {
+            taskId=(UUID)getArguments().getSerializable(ARG_TASK_ID);
+            this.task= TaskStorage.getInstance().getTask(taskId);
+        }
 //        dateButton=getView().findViewById(R.id.task_date);
 //        nameField= getView().findViewById(R.id.task_name);
 //        doneCheckBox= getView().findViewById(R.id.task_done);

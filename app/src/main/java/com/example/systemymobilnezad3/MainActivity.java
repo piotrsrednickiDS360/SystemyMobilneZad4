@@ -19,6 +19,6 @@ public class MainActivity extends SingleFragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        fragment=createFragment();
+        setContentView(R.layout.fragment_task_list);
     }
 }

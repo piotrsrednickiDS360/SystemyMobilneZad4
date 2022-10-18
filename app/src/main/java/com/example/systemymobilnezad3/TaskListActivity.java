@@ -17,6 +17,7 @@ public class TaskListActivity extends SingleFragmentActivity {
     private Button dateButton;
     private CheckBox doneCheckBox;
     private Fragment fragment;
+    public final String KEY_1="task_id";
     @Override
     public Fragment createFragment() {
         UUID taskId=(UUID)getIntent().getSerializableExtra(TaskListFragment.KEY_EXTRA_TASK_ID);
@@ -27,6 +28,7 @@ public class TaskListActivity extends SingleFragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //fragment=createFragment();
+
         setContentView(R.layout.fragment_task);
         dateButton=findViewById(R.id.task_date);
         nameField=findViewById(R.id.task_name);
@@ -35,6 +37,8 @@ public class TaskListActivity extends SingleFragmentActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(TaskListActivity.this,MainActivity.class);
+                int variable=0;
+                intent.putExtra(KEY_1,variable);
                 startActivity(intent);
             }
         });
