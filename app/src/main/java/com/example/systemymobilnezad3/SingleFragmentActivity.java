@@ -1,12 +1,14 @@
 package com.example.systemymobilnezad3;
 
+import android.util.Log;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 public abstract class SingleFragmentActivity extends AppCompatActivity {
     public Fragment createFragment(){
-
+        Log.d("todoapp","SingleFragmentActivity createFragment");
         setContentView(R.layout.fragment_task);
         FragmentManager fragmentManager=getSupportFragmentManager();
         Fragment fragment = fragmentManager.findFragmentById(R.id.fragment_container);

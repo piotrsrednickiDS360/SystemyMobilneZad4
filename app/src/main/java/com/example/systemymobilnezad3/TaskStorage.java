@@ -1,5 +1,7 @@
 package com.example.systemymobilnezad3;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -14,6 +16,7 @@ public class TaskStorage {
     }
 
     private TaskStorage(){
+        Log.d("todoapp","TaskStorage");
         tasks=new ArrayList<>();
         for(int i=1; i<=150;i++){
             Task task = new Task();

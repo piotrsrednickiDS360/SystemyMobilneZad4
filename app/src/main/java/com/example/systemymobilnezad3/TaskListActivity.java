@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -28,7 +29,7 @@ public class TaskListActivity extends SingleFragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //fragment=createFragment();
-
+        Log.d("todoapp","TaskListActivity");
         setContentView(R.layout.fragment_task);
         dateButton=findViewById(R.id.task_date);
         nameField=findViewById(R.id.task_name);

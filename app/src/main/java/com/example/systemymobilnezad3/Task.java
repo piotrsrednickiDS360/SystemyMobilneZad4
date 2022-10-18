@@ -1,5 +1,7 @@
 package com.example.systemymobilnezad3;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
 import java.util.Date;
@@ -11,6 +13,7 @@ public class Task {
     private Date date;
     private boolean done;
     public Task(){
+        Log.d("todoapp","Task");
         id= UUID.randomUUID();
         date=new Date();
     }
