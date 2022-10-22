@@ -13,7 +13,7 @@ public class Task {
     private Date date;
     private boolean done;
     public Task(){
-        Log.d("todoapp","Task");
+        //Log.d("todoapp","Task");
         id= UUID.randomUUID();
         date=new Date();
     }

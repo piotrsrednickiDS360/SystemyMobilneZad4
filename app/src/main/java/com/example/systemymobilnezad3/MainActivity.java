@@ -3,6 +3,8 @@ package com.example.systemymobilnezad3;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -27,6 +29,7 @@ public class MainActivity extends SingleFragmentActivity {
         super.onCreate(savedInstanceState);
         Log.d("todoapp","MainActivity");
         taskStorage=TaskStorage.getInstance().getTasks();
+
         setContentView(R.layout.fragment_task_list);
         for(int i=0;i<taskStorage.size();i++){
 
