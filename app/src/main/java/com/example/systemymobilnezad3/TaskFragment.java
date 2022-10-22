@@ -24,68 +24,56 @@ public class TaskFragment extends Fragment {
     private EditText nameField;
     private Button dateButton;
     private CheckBox doneCheckBox;
-    public UUID taskId;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d("todoapp","TaskFragment");
-        if (getArguments() != null) {
-            taskId=(UUID)getArguments().getSerializable(ARG_TASK_ID);
-            this.task= TaskStorage.getInstance().getTask(taskId);
-        }
-//        dateButton=getView().findViewById(R.id.task_date);
-//        nameField= getView().findViewById(R.id.task_name);
-//        doneCheckBox= getView().findViewById(R.id.task_done);
-//        dateButton.setText(task.getDate().toString());
-//        dateButton.setEnabled(false);
-//        doneCheckBox.setText(task.getDate().toString());
-//        doneCheckBox.setOnCheckedChangeListener((buttonView,isChecked) -> task.setDone(isChecked));
+        Log.d("todoapp","TaskFragment onCreate");
+        UUID taskId=(UUID)getArguments().getSerializable(ARG_TASK_ID);
+        task= TaskStorage.getInstance().getTask(taskId);
 
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        if (container != null) {
-            EditText nameField = container.findViewById(R.id.task_name);
-            if (nameField != null) {
+        View view = inflater.inflate(R.layout.fragment_task, container, false);
 
-                nameField.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        nameField = view.findViewById(R.id.task_name);
+        dateButton = view.findViewById(R.id.task_date);
+        doneCheckBox = view.findViewById(R.id.task_done);
 
-                    }
+        nameField.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-                    @Override
-                    public void onTextChanged(CharSequence s, int start, int before, int count) {
-                        task.setName(s.toString());
-                    }
-
-                    @Override
-                    public void afterTextChanged(Editable s) {
-
-                    }
-                });
-            }
-            Button dateButton = container.findViewById(R.id.task_date);
-            if (dateButton != null) {
-                dateButton.setText(task.getDate().toString());
-                dateButton.setEnabled(false);
-            }
-            CheckBox doneCheckbox = container.findViewById(R.id.task_done);
-            if (doneCheckbox != null) {
-                doneCheckbox.setChecked(task.isDone());
-                doneCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
-                    task.setDone(isChecked);
-                });
             }
 
-        }
-        return inflater.inflate(R.layout.fragment_task,container,false);
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                task.setName(s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+        nameField.setText(task.getName());
+        doneCheckBox.setChecked(task.isDone());
+
+        dateButton.setText(task.getDate().toString());
+        dateButton.setEnabled(false);
+
+        doneCheckBox.setChecked(task.isDone());
+        doneCheckBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            task.setDone(isChecked);
+        });
+
+        return view;
     }
     public static TaskFragment newInstance(UUID taskId){
-        Bundle bundle=new Bundle();
-        bundle.putSerializable(ARG_TASK_ID,taskId);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(ARG_TASK_ID, taskId);
         TaskFragment taskFragment = new TaskFragment();
         taskFragment.setArguments(bundle);
         return taskFragment;

@@ -22,8 +22,6 @@ u
 Eapp/src/test/java/com/example/systemymobilnezad3/ExampleUnitTest.java,b\8\b8d689cf4c58e90d71233f11248c69aac4bd9085
 P
  app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
-q
-Aapp/src/main/java/com/example/systemymobilnezad3/TaskStorage.java,1\9\19d19750e26e9c1eb8b9ada5709c6a1a9c40c0f6
 @
 app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
 <

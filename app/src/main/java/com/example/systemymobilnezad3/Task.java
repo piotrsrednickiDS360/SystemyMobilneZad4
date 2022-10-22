@@ -12,10 +12,10 @@ public class Task {
     private String name;
     private Date date;
     private boolean done;
-    public Task(){
+    public Task(Date new_date){
         //Log.d("todoapp","Task");
         id= UUID.randomUUID();
-        date=new Date();
+        date=new_date;
     }
 
     public void setName(String name) {

@@ -17,54 +17,60 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class TaskListFragment extends Fragment {
-    public static final String KEY_EXTRA_TASK_ID = "id";
-    public RecyclerView recyclerView;
-    public TaskAdapter adapter;
-
+    public static final String KEY_EXTRA_TASK_ID = "task_id";
+    private RecyclerView recyclerView;
+    private TaskAdapter adapter = null;
+    @Nullable
     @Override
-    public void onResume() {
-        super.onResume();
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_task_list, container, false);
+        recyclerView = view.findViewById(R.id.task_recycler_view);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         updateView();
+        return view;
     }
 
     private class TaskHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        private static final String KEY_EXTRA_TASK_ID = "id";
-        public TextView nameTextView;
-        public TextView dateTextView;
         private Task task;
+        private TextView nameTextView;
+        private TextView dateTextView;
 
         public TaskHolder(LayoutInflater inflater, ViewGroup parent){
-            super(inflater.inflate(R.layout.list_item_task,parent,false));
+            super(inflater.inflate(R.layout.list_item_task, parent, false));
             itemView.setOnClickListener(this);
-            nameTextView=itemView.findViewById(R.id.task_item_name);
-            dateTextView=itemView.findViewById(R.id.task_item_date);
 
+            nameTextView = itemView.findViewById(R.id.task_item_name);
+            dateTextView = itemView.findViewById(R.id.task_item_date);
         }
+
         public void bind(Task task){
-            this.task=task;
+            this.task = task;
             nameTextView.setText(task.getName());
-            dateTextView.setText(task.getDate().toString());
+            dateTextView.setText(task.getDate().toString().substring(4,task.getDate().toString().length()-8));
+
         }
 
         @Override
-        public void onClick(View view) {
-            Intent intent=new Intent(getActivity(),MainActivity.class);
-            intent.putExtra(KEY_EXTRA_TASK_ID,task.getId());
+        public void onClick(View v) {
+            Intent intent = new Intent(getActivity(), MainActivity.class);
+            intent.putExtra(KEY_EXTRA_TASK_ID, task.getId());
             startActivity(intent);
         }
     }
+
     private class TaskAdapter extends RecyclerView.Adapter<TaskHolder>{
         private List<Task> tasks;
 
-        public TaskAdapter(List<Task> tasks){
-            this.tasks=tasks;
+        public TaskAdapter(List<Task> tasks) {
+            this.tasks = tasks;
         }
 
         @NonNull
         @Override
         public TaskHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            LayoutInflater layoutInflater=LayoutInflater.from(getActivity());
-            return new TaskHolder(layoutInflater,parent);
+            LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
+            return new TaskHolder(layoutInflater, parent);
         }
 
         @Override
@@ -78,28 +84,22 @@ public class TaskListFragment extends Fragment {
             return tasks.size();
         }
     }
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        Log.d("todoapp","TaskListFragment");
-        View view=inflater.inflate(R.layout.fragment_task_list,container,false);
-        recyclerView= view.findViewById(R.id.task_recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        adapter = new TaskAdapter(TaskStorage.getInstance().getTasks());
-        recyclerView.setAdapter(adapter);
-        return recyclerView;
 
-    }
-    private void updateView(){
-        TaskStorage taskStorage=TaskStorage.getInstance();
-        List<Task> tasks= taskStorage.getTasks();
+    private void updateView() {
+        TaskStorage taskStorage = TaskStorage.getInstance();
+        List<Task> tasks = taskStorage.getTasks();
 
-        if(adapter==null){
-            adapter= new TaskAdapter(tasks);
+        if(adapter == null) {
+            adapter = new TaskAdapter(tasks);
             recyclerView.setAdapter(adapter);
-        }
-        else{
+        }else{
             adapter.notifyDataSetChanged();
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateView();
     }
 }

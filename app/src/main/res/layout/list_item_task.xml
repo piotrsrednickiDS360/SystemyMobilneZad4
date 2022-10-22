@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal">
-
+    android:layout_height="50dp">
 
     <TextView
         android:id="@+id/task_item_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/name_label" />
+        android:textSize="20sp"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_weight="0.5"
+        android:background="@drawable/back"
+        android:textAlignment="center"/>
 
     <TextView
         android:id="@+id/task_item_date"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/details_label"/>
+        android:textSize="20sp"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_weight="0.5"
+        android:background="@drawable/back"
+        android:textAlignment="center"/>
+
 </LinearLayout>
