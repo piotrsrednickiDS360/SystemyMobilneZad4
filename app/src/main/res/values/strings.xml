@@ -1,7 +1,13 @@
 <resources>
-    <string name="app_name">SystemyMobilneZad3</string>
-    <string name="task_name_hint">Wpisz nazwę zadania</string>
-    <string name="task_name_label">Nazwa</string>
-    <string name="task_details_label">Szczegóły</string>
-    <string name="task_done_label">Wykonane</string>
+    <string name="app_name" translatable="false">SystemyMobilneZad3</string>
+    <string name="task_name_hint" translatable="false">Wpisz nazwę zadania</string>
+    <string name="task_name_label" translatable="false">Nazwa</string>
+    <string name="task_details_label" translatable="false">Szczegóły</string>
+    <string name="task_done_label" translatable="false">Wykonane</string>
+    <string name="imageViewDesc" translatable="false">Zdjęcie</string>
+    <string name="task_add_view" translatable="false">Nowe zadanie</string>
+    <string name="show_subtitle" translatable="false">Pokaż podtytuł</string>
+    <string name="hide_subtitle" translatable="false">Ukryj podtytuł</string>
+    <string name="subtitle_format" translatable="false">%1$d zadań</string>
+    <string name="task_add_new" translatable="false">Nowe zadanie</string>
 </resources>

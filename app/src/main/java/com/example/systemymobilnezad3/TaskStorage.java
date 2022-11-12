@@ -17,6 +17,10 @@ public class TaskStorage {
         return taskStorage;
     }
 
+    public void addTask(Task task)
+    {
+        tasks.add(task);
+    }
     private TaskStorage(){
         Log.d("todoapp","TaskStorage");
         tasks=new ArrayList<>();
@@ -29,6 +33,12 @@ public class TaskStorage {
             Task task = new Task(dt);
             task.setName("Zadanie "+i);
             task.setDone(i % 3 == 0);
+            if(i%3==0){
+                task.setCategory(Category.STUDIES);
+            }
+            else{
+                task.setCategory(Category.HOME);
+            }
             tasks.add(task);
         }
     }

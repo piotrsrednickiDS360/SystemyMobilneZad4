@@ -12,17 +12,29 @@ public class Task {
     private String name;
     private Date date;
     private boolean done;
+    private Category category;
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
     public Task(Date new_date){
         //Log.d("todoapp","Task");
         id= UUID.randomUUID();
         date=new_date;
+        done=false;
+        name="";
+        category=Category.HOME;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    @NonNull
     @Override
     public String toString() {
         return "Task{" +
@@ -30,6 +42,7 @@ public class Task {
                 ", name='" + name + '\'' +
                 ", date=" + date +
                 ", done=" + done +
+                ", category=" + category +
                 '}';
     }
 

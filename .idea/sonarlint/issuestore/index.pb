@@ -26,3 +26,7 @@ P
 app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
 <
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
+r
+Bapp/src/main/java/com/example/systemymobilnezad3/MainActivity.java,b\0\b0caaaf5cfcf1c0e3eed195463c6d66b18c7ad4e
+v
+Fapp/src/main/java/com/example/systemymobilnezad3/TaskListActivity.java,a\6\a659a60d5c86aae1a213c66331f49b13f9b549fe
